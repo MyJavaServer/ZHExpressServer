@@ -9,7 +9,7 @@ public class ZHConfig {
     public static final String GLOBAL_APP_MODE_LIVE = "LIVE";
     public static final String GLOBAL_APP_MODE_TEST = "TEST";
     public static final String GLOBAL_APP_MODE_DEV = "DEV";
-    public static final String SERVER_URL_TEST = "https://www.cloudolize.cn";
+    public static final String SERVER_URL_TEST = "http://localhost:8443/ZHexpressServer";
     public static final String SERVER_URL_DEV = "http://120.26.48.110";
     public static final String SERVER_URL_LIVE = "https://www.doulongwan.world";
 
@@ -226,5 +226,9 @@ public class ZHConfig {
     public static final String RESP_PASSWORD_ERR = "密码错误，请重试!";
     public static final String RESP_PASSWORD_CHANGED_SUCCESS = "密码修改成功!";
     public static final String RESP_PASSWORD_RESET_ERROR = "用户与所输手机号不匹配，请重试!";
+
+    public static final String AS_FILE_TYPE_IMAGE = "images";
+    public static final String AS_FILE_TYPE_NORMAL_FILES = "files";
+    public static final String AS_FILE_TYPE_NORMAL_VIEDO = "viedo";
 
 }

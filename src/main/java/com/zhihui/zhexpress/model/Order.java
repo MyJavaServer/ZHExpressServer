@@ -7,19 +7,23 @@ public class Order {
 
     private String num;
 
-    private Integer picId;
+    private Integer userId;
+
+    private String userNum;
+
+    private String picNum;
+
+    private String repoNum;
 
     private Integer coId;
 
-    private Integer repoId;
-
-    private Integer userId;
+    private String picAddr;
 
     private String stype;
 
-    private String remarks;
-
     private Integer status;
+
+    private String remarks;
 
     private Date createtime;
 
@@ -41,12 +45,36 @@ public class Order {
         this.num = num == null ? null : num.trim();
     }
 
-    public Integer getPicId() {
-        return picId;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setPicId(Integer picId) {
-        this.picId = picId;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getUserNum() {
+        return userNum;
+    }
+
+    public void setUserNum(String userNum) {
+        this.userNum = userNum == null ? null : userNum.trim();
+    }
+
+    public String getPicNum() {
+        return picNum;
+    }
+
+    public void setPicNum(String picNum) {
+        this.picNum = picNum == null ? null : picNum.trim();
+    }
+
+    public String getRepoNum() {
+        return repoNum;
+    }
+
+    public void setRepoNum(String repoNum) {
+        this.repoNum = repoNum == null ? null : repoNum.trim();
     }
 
     public Integer getCoId() {
@@ -57,20 +85,12 @@ public class Order {
         this.coId = coId;
     }
 
-    public Integer getRepoId() {
-        return repoId;
+    public String getPicAddr() {
+        return picAddr;
     }
 
-    public void setRepoId(Integer repoId) {
-        this.repoId = repoId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setPicAddr(String picAddr) {
+        this.picAddr = picAddr == null ? null : picAddr.trim();
     }
 
     public String getStype() {
@@ -81,20 +101,20 @@ public class Order {
         this.stype = stype == null ? null : stype.trim();
     }
 
-    public String getRemarks() {
-        return remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks == null ? null : remarks.trim();
-    }
-
     public Integer getStatus() {
         return status;
     }
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks == null ? null : remarks.trim();
     }
 
     public Date getCreatetime() {

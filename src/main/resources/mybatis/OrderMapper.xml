@@ -296,4 +296,39 @@
       updatetime = #{updatetime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!--Custom-->
+  <select id="getOrderList" parameterType="map" resultType="map">
+    select * from `order` o where 1=1
+    <if test="num != null">
+      and o.num=#{num}
+    </if>
+    <if test="userNum != null">
+      and o.user_num=#{userNum}
+    </if>
+    <if test="repoNum != null">
+      and o.repo_num=#{repoNum}
+    </if>
+    <if test="picNum != null">
+      and o.pic_num=#{picNum}
+    </if>
+    <if test="stype != null">
+      and o.stype=#{stype}
+    </if>
+    <if test="status != null">
+      and o.status=#{status}
+    </if>
+    <if test="startTime != null and startTime != ''">
+      and o.createtime <![CDATA[   >=  ]]> #{startTime}
+    </if>
+    <if test="endTime != null and endTime != ''">
+      and o.createtime <![CDATA[   <=  ]]> #{endTime}
+    </if>
+    <if test="orderBy != null">
+      order by #{orderBy}
+    </if>
+  </select>
+
+
+
 </mapper>

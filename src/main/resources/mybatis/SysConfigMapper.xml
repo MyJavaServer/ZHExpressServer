@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zhihui.zhexpress.mapper.PictureMapper">
-  <resultMap id="BaseResultMap" type="com.zhihui.zhexpress.model.Picture">
+<mapper namespace="com.zhihui.zhexpress.mapper.SysConfigMapper">
+  <resultMap id="BaseResultMap" type="com.zhihui.zhexpress.model.SysConfig">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="pic_num" jdbcType="VARCHAR" property="picNum" />
-    <result column="pic_addr" jdbcType="VARCHAR" property="picAddr" />
+    <result column="skey" jdbcType="VARCHAR" property="skey" />
+    <result column="svalue" jdbcType="VARCHAR" property="svalue" />
+    <result column="stype" jdbcType="VARCHAR" property="stype" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
     <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
     <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
   </resultMap>
@@ -67,15 +69,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, pic_num, pic_addr, createtime, updatetime
+    id, skey, svalue, stype, remarks, createtime, updatetime
   </sql>
-  <select id="selectByExample" parameterType="com.zhihui.zhexpress.model.PictureExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.zhihui.zhexpress.model.SysConfigExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from picture
+    from sys_config
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,33 +88,41 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from picture
+    from sys_config
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from picture
+    delete from sys_config
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.zhihui.zhexpress.model.PictureExample">
-    delete from picture
+  <delete id="deleteByExample" parameterType="com.zhihui.zhexpress.model.SysConfigExample">
+    delete from sys_config
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zhihui.zhexpress.model.Picture" useGeneratedKeys="true">
-    insert into picture (pic_num, pic_addr, createtime, 
-      updatetime)
-    values (#{picNum,jdbcType=VARCHAR}, #{picAddr,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{updatetime,jdbcType=TIMESTAMP})
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zhihui.zhexpress.model.SysConfig" useGeneratedKeys="true">
+    insert into sys_config (skey, svalue, stype, 
+      remarks, createtime, updatetime
+      )
+    values (#{skey,jdbcType=VARCHAR}, #{svalue,jdbcType=VARCHAR}, #{stype,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
+      )
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zhihui.zhexpress.model.Picture" useGeneratedKeys="true">
-    insert into picture
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zhihui.zhexpress.model.SysConfig" useGeneratedKeys="true">
+    insert into sys_config
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="picNum != null">
-        pic_num,
+      <if test="skey != null">
+        skey,
       </if>
-      <if test="picAddr != null">
-        pic_addr,
+      <if test="svalue != null">
+        svalue,
+      </if>
+      <if test="stype != null">
+        stype,
+      </if>
+      <if test="remarks != null">
+        remarks,
       </if>
       <if test="createtime != null">
         createtime,
@@ -122,11 +132,17 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="picNum != null">
-        #{picNum,jdbcType=VARCHAR},
+      <if test="skey != null">
+        #{skey,jdbcType=VARCHAR},
       </if>
-      <if test="picAddr != null">
-        #{picAddr,jdbcType=VARCHAR},
+      <if test="svalue != null">
+        #{svalue,jdbcType=VARCHAR},
+      </if>
+      <if test="stype != null">
+        #{stype,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null">
         #{createtime,jdbcType=TIMESTAMP},
@@ -136,23 +152,29 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.zhihui.zhexpress.model.PictureExample" resultType="java.lang.Long">
-    select count(*) from picture
+  <select id="countByExample" parameterType="com.zhihui.zhexpress.model.SysConfigExample" resultType="java.lang.Long">
+    select count(*) from sys_config
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update picture
+    update sys_config
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.picNum != null">
-        pic_num = #{record.picNum,jdbcType=VARCHAR},
+      <if test="record.skey != null">
+        skey = #{record.skey,jdbcType=VARCHAR},
       </if>
-      <if test="record.picAddr != null">
-        pic_addr = #{record.picAddr,jdbcType=VARCHAR},
+      <if test="record.svalue != null">
+        svalue = #{record.svalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stype != null">
+        stype = #{record.stype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remarks != null">
+        remarks = #{record.remarks,jdbcType=VARCHAR},
       </if>
       <if test="record.createtime != null">
         createtime = #{record.createtime,jdbcType=TIMESTAMP},
@@ -166,24 +188,32 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update picture
+    update sys_config
     set id = #{record.id,jdbcType=INTEGER},
-      pic_num = #{record.picNum,jdbcType=VARCHAR},
-      pic_addr = #{record.picAddr,jdbcType=VARCHAR},
+      skey = #{record.skey,jdbcType=VARCHAR},
+      svalue = #{record.svalue,jdbcType=VARCHAR},
+      stype = #{record.stype,jdbcType=VARCHAR},
+      remarks = #{record.remarks,jdbcType=VARCHAR},
       createtime = #{record.createtime,jdbcType=TIMESTAMP},
       updatetime = #{record.updatetime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zhihui.zhexpress.model.Picture">
-    update picture
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhihui.zhexpress.model.SysConfig">
+    update sys_config
     <set>
-      <if test="picNum != null">
-        pic_num = #{picNum,jdbcType=VARCHAR},
+      <if test="skey != null">
+        skey = #{skey,jdbcType=VARCHAR},
       </if>
-      <if test="picAddr != null">
-        pic_addr = #{picAddr,jdbcType=VARCHAR},
+      <if test="svalue != null">
+        svalue = #{svalue,jdbcType=VARCHAR},
+      </if>
+      <if test="stype != null">
+        stype = #{stype,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null">
         createtime = #{createtime,jdbcType=TIMESTAMP},
@@ -194,12 +224,20 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zhihui.zhexpress.model.Picture">
-    update picture
-    set pic_num = #{picNum,jdbcType=VARCHAR},
-      pic_addr = #{picAddr,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.zhihui.zhexpress.model.SysConfig">
+    update sys_config
+    set skey = #{skey,jdbcType=VARCHAR},
+      svalue = #{svalue,jdbcType=VARCHAR},
+      stype = #{stype,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=TIMESTAMP},
       updatetime = #{updatetime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!--Custom-->
+  <select id="getScanTypes" resultType="map">
+    select skey, svalue from sys_config where stype='scantype'
+  </select>
+
 </mapper>

@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class PictureExample {
+public class SysConfigExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public PictureExample() {
+    public SysConfigExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -165,143 +165,283 @@ public class PictureExample {
             return (Criteria) this;
         }
 
-        public Criteria andPicNumIsNull() {
-            addCriterion("pic_num is null");
+        public Criteria andSkeyIsNull() {
+            addCriterion("skey is null");
             return (Criteria) this;
         }
 
-        public Criteria andPicNumIsNotNull() {
-            addCriterion("pic_num is not null");
+        public Criteria andSkeyIsNotNull() {
+            addCriterion("skey is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPicNumEqualTo(String value) {
-            addCriterion("pic_num =", value, "picNum");
+        public Criteria andSkeyEqualTo(String value) {
+            addCriterion("skey =", value, "skey");
             return (Criteria) this;
         }
 
-        public Criteria andPicNumNotEqualTo(String value) {
-            addCriterion("pic_num <>", value, "picNum");
+        public Criteria andSkeyNotEqualTo(String value) {
+            addCriterion("skey <>", value, "skey");
             return (Criteria) this;
         }
 
-        public Criteria andPicNumGreaterThan(String value) {
-            addCriterion("pic_num >", value, "picNum");
+        public Criteria andSkeyGreaterThan(String value) {
+            addCriterion("skey >", value, "skey");
             return (Criteria) this;
         }
 
-        public Criteria andPicNumGreaterThanOrEqualTo(String value) {
-            addCriterion("pic_num >=", value, "picNum");
+        public Criteria andSkeyGreaterThanOrEqualTo(String value) {
+            addCriterion("skey >=", value, "skey");
             return (Criteria) this;
         }
 
-        public Criteria andPicNumLessThan(String value) {
-            addCriterion("pic_num <", value, "picNum");
+        public Criteria andSkeyLessThan(String value) {
+            addCriterion("skey <", value, "skey");
             return (Criteria) this;
         }
 
-        public Criteria andPicNumLessThanOrEqualTo(String value) {
-            addCriterion("pic_num <=", value, "picNum");
+        public Criteria andSkeyLessThanOrEqualTo(String value) {
+            addCriterion("skey <=", value, "skey");
             return (Criteria) this;
         }
 
-        public Criteria andPicNumLike(String value) {
-            addCriterion("pic_num like", value, "picNum");
+        public Criteria andSkeyLike(String value) {
+            addCriterion("skey like", value, "skey");
             return (Criteria) this;
         }
 
-        public Criteria andPicNumNotLike(String value) {
-            addCriterion("pic_num not like", value, "picNum");
+        public Criteria andSkeyNotLike(String value) {
+            addCriterion("skey not like", value, "skey");
             return (Criteria) this;
         }
 
-        public Criteria andPicNumIn(List<String> values) {
-            addCriterion("pic_num in", values, "picNum");
+        public Criteria andSkeyIn(List<String> values) {
+            addCriterion("skey in", values, "skey");
             return (Criteria) this;
         }
 
-        public Criteria andPicNumNotIn(List<String> values) {
-            addCriterion("pic_num not in", values, "picNum");
+        public Criteria andSkeyNotIn(List<String> values) {
+            addCriterion("skey not in", values, "skey");
             return (Criteria) this;
         }
 
-        public Criteria andPicNumBetween(String value1, String value2) {
-            addCriterion("pic_num between", value1, value2, "picNum");
+        public Criteria andSkeyBetween(String value1, String value2) {
+            addCriterion("skey between", value1, value2, "skey");
             return (Criteria) this;
         }
 
-        public Criteria andPicNumNotBetween(String value1, String value2) {
-            addCriterion("pic_num not between", value1, value2, "picNum");
+        public Criteria andSkeyNotBetween(String value1, String value2) {
+            addCriterion("skey not between", value1, value2, "skey");
             return (Criteria) this;
         }
 
-        public Criteria andPicAddrIsNull() {
-            addCriterion("pic_addr is null");
+        public Criteria andSvalueIsNull() {
+            addCriterion("svalue is null");
             return (Criteria) this;
         }
 
-        public Criteria andPicAddrIsNotNull() {
-            addCriterion("pic_addr is not null");
+        public Criteria andSvalueIsNotNull() {
+            addCriterion("svalue is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPicAddrEqualTo(String value) {
-            addCriterion("pic_addr =", value, "picAddr");
+        public Criteria andSvalueEqualTo(String value) {
+            addCriterion("svalue =", value, "svalue");
             return (Criteria) this;
         }
 
-        public Criteria andPicAddrNotEqualTo(String value) {
-            addCriterion("pic_addr <>", value, "picAddr");
+        public Criteria andSvalueNotEqualTo(String value) {
+            addCriterion("svalue <>", value, "svalue");
             return (Criteria) this;
         }
 
-        public Criteria andPicAddrGreaterThan(String value) {
-            addCriterion("pic_addr >", value, "picAddr");
+        public Criteria andSvalueGreaterThan(String value) {
+            addCriterion("svalue >", value, "svalue");
             return (Criteria) this;
         }
 
-        public Criteria andPicAddrGreaterThanOrEqualTo(String value) {
-            addCriterion("pic_addr >=", value, "picAddr");
+        public Criteria andSvalueGreaterThanOrEqualTo(String value) {
+            addCriterion("svalue >=", value, "svalue");
             return (Criteria) this;
         }
 
-        public Criteria andPicAddrLessThan(String value) {
-            addCriterion("pic_addr <", value, "picAddr");
+        public Criteria andSvalueLessThan(String value) {
+            addCriterion("svalue <", value, "svalue");
             return (Criteria) this;
         }
 
-        public Criteria andPicAddrLessThanOrEqualTo(String value) {
-            addCriterion("pic_addr <=", value, "picAddr");
+        public Criteria andSvalueLessThanOrEqualTo(String value) {
+            addCriterion("svalue <=", value, "svalue");
             return (Criteria) this;
         }
 
-        public Criteria andPicAddrLike(String value) {
-            addCriterion("pic_addr like", value, "picAddr");
+        public Criteria andSvalueLike(String value) {
+            addCriterion("svalue like", value, "svalue");
             return (Criteria) this;
         }
 
-        public Criteria andPicAddrNotLike(String value) {
-            addCriterion("pic_addr not like", value, "picAddr");
+        public Criteria andSvalueNotLike(String value) {
+            addCriterion("svalue not like", value, "svalue");
             return (Criteria) this;
         }
 
-        public Criteria andPicAddrIn(List<String> values) {
-            addCriterion("pic_addr in", values, "picAddr");
+        public Criteria andSvalueIn(List<String> values) {
+            addCriterion("svalue in", values, "svalue");
             return (Criteria) this;
         }
 
-        public Criteria andPicAddrNotIn(List<String> values) {
-            addCriterion("pic_addr not in", values, "picAddr");
+        public Criteria andSvalueNotIn(List<String> values) {
+            addCriterion("svalue not in", values, "svalue");
             return (Criteria) this;
         }
 
-        public Criteria andPicAddrBetween(String value1, String value2) {
-            addCriterion("pic_addr between", value1, value2, "picAddr");
+        public Criteria andSvalueBetween(String value1, String value2) {
+            addCriterion("svalue between", value1, value2, "svalue");
             return (Criteria) this;
         }
 
-        public Criteria andPicAddrNotBetween(String value1, String value2) {
-            addCriterion("pic_addr not between", value1, value2, "picAddr");
+        public Criteria andSvalueNotBetween(String value1, String value2) {
+            addCriterion("svalue not between", value1, value2, "svalue");
+            return (Criteria) this;
+        }
+
+        public Criteria andStypeIsNull() {
+            addCriterion("stype is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStypeIsNotNull() {
+            addCriterion("stype is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStypeEqualTo(String value) {
+            addCriterion("stype =", value, "stype");
+            return (Criteria) this;
+        }
+
+        public Criteria andStypeNotEqualTo(String value) {
+            addCriterion("stype <>", value, "stype");
+            return (Criteria) this;
+        }
+
+        public Criteria andStypeGreaterThan(String value) {
+            addCriterion("stype >", value, "stype");
+            return (Criteria) this;
+        }
+
+        public Criteria andStypeGreaterThanOrEqualTo(String value) {
+            addCriterion("stype >=", value, "stype");
+            return (Criteria) this;
+        }
+
+        public Criteria andStypeLessThan(String value) {
+            addCriterion("stype <", value, "stype");
+            return (Criteria) this;
+        }
+
+        public Criteria andStypeLessThanOrEqualTo(String value) {
+            addCriterion("stype <=", value, "stype");
+            return (Criteria) this;
+        }
+
+        public Criteria andStypeLike(String value) {
+            addCriterion("stype like", value, "stype");
+            return (Criteria) this;
+        }
+
+        public Criteria andStypeNotLike(String value) {
+            addCriterion("stype not like", value, "stype");
+            return (Criteria) this;
+        }
+
+        public Criteria andStypeIn(List<String> values) {
+            addCriterion("stype in", values, "stype");
+            return (Criteria) this;
+        }
+
+        public Criteria andStypeNotIn(List<String> values) {
+            addCriterion("stype not in", values, "stype");
+            return (Criteria) this;
+        }
+
+        public Criteria andStypeBetween(String value1, String value2) {
+            addCriterion("stype between", value1, value2, "stype");
+            return (Criteria) this;
+        }
+
+        public Criteria andStypeNotBetween(String value1, String value2) {
+            addCriterion("stype not between", value1, value2, "stype");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarksIsNull() {
+            addCriterion("remarks is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarksIsNotNull() {
+            addCriterion("remarks is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarksEqualTo(String value) {
+            addCriterion("remarks =", value, "remarks");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarksNotEqualTo(String value) {
+            addCriterion("remarks <>", value, "remarks");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarksGreaterThan(String value) {
+            addCriterion("remarks >", value, "remarks");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarksGreaterThanOrEqualTo(String value) {
+            addCriterion("remarks >=", value, "remarks");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarksLessThan(String value) {
+            addCriterion("remarks <", value, "remarks");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarksLessThanOrEqualTo(String value) {
+            addCriterion("remarks <=", value, "remarks");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarksLike(String value) {
+            addCriterion("remarks like", value, "remarks");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarksNotLike(String value) {
+            addCriterion("remarks not like", value, "remarks");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarksIn(List<String> values) {
+            addCriterion("remarks in", values, "remarks");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarksNotIn(List<String> values) {
+            addCriterion("remarks not in", values, "remarks");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarksBetween(String value1, String value2) {
+            addCriterion("remarks between", value1, value2, "remarks");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarksNotBetween(String value1, String value2) {
+            addCriterion("remarks not between", value1, value2, "remarks");
             return (Criteria) this;
         }
 

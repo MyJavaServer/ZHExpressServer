@@ -61,22 +61,24 @@
         </javaClientGenerator>
 
         <!-- 指定数据库表 -->
-        <table tableName="user">
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
-        <table tableName="order">
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
-        <table tableName="picture">
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
-        <table tableName="repertory">
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
-        <table tableName="cordinate">
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
-
+        <!--<table tableName="user">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table tableName="order">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table tableName="picture">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table tableName="repertory">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table tableName="cordinate">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table tableName="sys_config">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
 
     </context>
 </generatorConfiguration>
