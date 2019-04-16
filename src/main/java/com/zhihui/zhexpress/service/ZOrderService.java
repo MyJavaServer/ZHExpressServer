@@ -9,6 +9,7 @@ import com.zhihui.zhexpress.mapper.OrderMapper;
 import com.zhihui.zhexpress.mapper.SysConfigMapper;
 import com.zhihui.zhexpress.model.ExcelData;
 import com.zhihui.zhexpress.model.Order;
+import com.zhihui.zhexpress.utils.DateUtil;
 import com.zhihui.zhexpress.utils.ExportExcelUtils;
 import com.zhihui.zhexpress.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,26 +90,27 @@ public class ZOrderService {
             row.add(o.getRepoNum());
             row.add(o.getStype());
             row.add(o.getRemarks());
-            row.add(o.getCreatetime());
-            row.add(o.getUpdatetime());
+            row.add(DateUtil.getFormatDateStr(o.getCreatetime(), "YYYY-MM-DD hh:mm:ss"));
+            row.add(DateUtil.getFormatDateStr(o.getUpdatetime(),"YYYY-MM-DD hh:mm:ss"));
             rows.add(row);
         }
         excelData.setTitles(titles);
         excelData.setRows(rows);
         try {
             // TODO: 2019/4/12 注意替换到对应服务器的文件保存地址
-            String homeDir = "src/main/";
+//            String homeDir = "src/main/";     //for local test
+            String homeDir = "/usr/local/tomcat8/webapps/files/excel/";       //server
             ExportExcelUtils.exportExcel2(excelData, homeDir + fileName);
             String appMode = ExpressApplication.getGlobalAppMode();
             String fileUrl = "";
             if (appMode.equals(ZHConfig.GLOBAL_APP_MODE_LIVE)) {
                 fileUrl = ZHConfig.SERVER_URL_LIVE + homeDir;
             } else if (appMode.equals(ZHConfig.GLOBAL_APP_MODE_DEV)) {
-                fileUrl = ZHConfig.SERVER_URL_DEV + homeDir;
+                fileUrl = ZHConfig.SERVER_URL_DEV + "/files/excel/";
             } else if (appMode.equals(ZHConfig.GLOBAL_APP_MODE_TEST)) {
                 fileUrl = ZHConfig.SERVER_URL_TEST + homeDir;
             }
-            fileUrl += homeDir + fileName;
+            fileUrl += fileName;
             return ZHResponse.success(fileUrl);
         } catch (Exception e) {
             e.printStackTrace();

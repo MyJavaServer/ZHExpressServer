@@ -7,15 +7,11 @@ public class Order {
 
     private String num;
 
-    private Integer userId;
-
     private String userNum;
 
     private String picNum;
 
     private String repoNum;
-
-    private Integer coId;
 
     private String picAddr;
 
@@ -28,6 +24,10 @@ public class Order {
     private Date createtime;
 
     private Date updatetime;
+
+    private String xlist;
+
+    private String ylist;
 
     public Integer getId() {
         return id;
@@ -43,14 +43,6 @@ public class Order {
 
     public void setNum(String num) {
         this.num = num == null ? null : num.trim();
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
     }
 
     public String getUserNum() {
@@ -75,14 +67,6 @@ public class Order {
 
     public void setRepoNum(String repoNum) {
         this.repoNum = repoNum == null ? null : repoNum.trim();
-    }
-
-    public Integer getCoId() {
-        return coId;
-    }
-
-    public void setCoId(Integer coId) {
-        this.coId = coId;
     }
 
     public String getPicAddr() {
@@ -131,5 +115,21 @@ public class Order {
 
     public void setUpdatetime(Date updatetime) {
         this.updatetime = updatetime;
+    }
+
+    public String getXlist() {
+        return xlist;
+    }
+
+    public void setXlist(String xlist) {
+        this.xlist = xlist == null ? null : xlist.trim();
+    }
+
+    public String getYlist() {
+        return ylist;
+    }
+
+    public void setYlist(String ylist) {
+        this.ylist = ylist == null ? null : ylist.trim();
     }
 }

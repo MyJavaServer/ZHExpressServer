@@ -4,15 +4,17 @@
   <resultMap id="BaseResultMap" type="com.zhihui.zhexpress.model.Order">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="num" jdbcType="VARCHAR" property="num" />
-    <result column="pic_id" jdbcType="INTEGER" property="picId" />
-    <result column="co_id" jdbcType="INTEGER" property="coId" />
-    <result column="repo_id" jdbcType="INTEGER" property="repoId" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_num" jdbcType="VARCHAR" property="userNum" />
+    <result column="pic_num" jdbcType="VARCHAR" property="picNum" />
+    <result column="repo_num" jdbcType="VARCHAR" property="repoNum" />
+    <result column="pic_addr" jdbcType="VARCHAR" property="picAddr" />
     <result column="stype" jdbcType="VARCHAR" property="stype" />
-    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
     <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
     <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
     <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="xlist" jdbcType="VARCHAR" property="xlist" />
+    <result column="ylist" jdbcType="VARCHAR" property="ylist" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,7 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, num, pic_id, co_id, repo_id, user_id, stype, remarks, status, createtime, updatetime
+    id, num, user_num, pic_num, repo_num, pic_addr, stype, status, remarks, createtime,
+    updatetime, xlist, ylist
   </sql>
   <select id="selectByExample" parameterType="com.zhihui.zhexpress.model.OrderExample" resultMap="BaseResultMap">
     select
@@ -90,7 +93,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from order
     where id = #{id,jdbcType=INTEGER}
@@ -106,14 +109,16 @@
     </if>
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zhihui.zhexpress.model.Order" useGeneratedKeys="true">
-    insert into order (num, pic_id, co_id, 
-      repo_id, user_id, stype, 
-      remarks, status, createtime, 
-      updatetime)
-    values (#{num,jdbcType=VARCHAR}, #{picId,jdbcType=INTEGER}, #{coId,jdbcType=INTEGER}, 
-      #{repoId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{stype,jdbcType=VARCHAR}, 
-      #{remarks,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{updatetime,jdbcType=TIMESTAMP})
+    insert into order (num, user_num, pic_num,
+      repo_num, pic_addr, stype,
+      status, remarks, createtime,
+      updatetime, xlist, ylist
+      )
+    values (#{num,jdbcType=VARCHAR}, #{userNum,jdbcType=VARCHAR}, #{picNum,jdbcType=VARCHAR},
+      #{repoNum,jdbcType=VARCHAR}, #{picAddr,jdbcType=VARCHAR}, #{stype,jdbcType=VARCHAR},
+      #{status,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP},
+      #{updatetime,jdbcType=TIMESTAMP}, #{xlist,jdbcType=VARCHAR}, #{ylist,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zhihui.zhexpress.model.Order" useGeneratedKeys="true">
     insert into order
@@ -121,26 +126,26 @@
       <if test="num != null">
         num,
       </if>
-      <if test="picId != null">
-        pic_id,
+      <if test="userNum != null">
+        user_num,
       </if>
-      <if test="coId != null">
-        co_id,
+      <if test="picNum != null">
+        pic_num,
       </if>
-      <if test="repoId != null">
-        repo_id,
+      <if test="repoNum != null">
+        repo_num,
       </if>
-      <if test="userId != null">
-        user_id,
+      <if test="picAddr != null">
+        pic_addr,
       </if>
       <if test="stype != null">
         stype,
       </if>
-      <if test="remarks != null">
-        remarks,
-      </if>
       <if test="status != null">
         status,
+      </if>
+      <if test="remarks != null">
+        remarks,
       </if>
       <if test="createtime != null">
         createtime,
@@ -148,37 +153,49 @@
       <if test="updatetime != null">
         updatetime,
       </if>
+      <if test="xlist != null">
+        xlist,
+      </if>
+      <if test="ylist != null">
+        ylist,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="num != null">
         #{num,jdbcType=VARCHAR},
       </if>
-      <if test="picId != null">
-        #{picId,jdbcType=INTEGER},
+      <if test="userNum != null">
+        #{userNum,jdbcType=VARCHAR},
       </if>
-      <if test="coId != null">
-        #{coId,jdbcType=INTEGER},
+      <if test="picNum != null">
+        #{picNum,jdbcType=VARCHAR},
       </if>
-      <if test="repoId != null">
-        #{repoId,jdbcType=INTEGER},
+      <if test="repoNum != null">
+        #{repoNum,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
+      <if test="picAddr != null">
+        #{picAddr,jdbcType=VARCHAR},
       </if>
       <if test="stype != null">
         #{stype,jdbcType=VARCHAR},
       </if>
-      <if test="remarks != null">
-        #{remarks,jdbcType=VARCHAR},
-      </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null">
         #{createtime,jdbcType=TIMESTAMP},
       </if>
       <if test="updatetime != null">
         #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="xlist != null">
+        #{xlist,jdbcType=VARCHAR},
+      </if>
+      <if test="ylist != null">
+        #{ylist,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -197,32 +214,38 @@
       <if test="record.num != null">
         num = #{record.num,jdbcType=VARCHAR},
       </if>
-      <if test="record.picId != null">
-        pic_id = #{record.picId,jdbcType=INTEGER},
+      <if test="record.userNum != null">
+        user_num = #{record.userNum,jdbcType=VARCHAR},
       </if>
-      <if test="record.coId != null">
-        co_id = #{record.coId,jdbcType=INTEGER},
+      <if test="record.picNum != null">
+        pic_num = #{record.picNum,jdbcType=VARCHAR},
       </if>
-      <if test="record.repoId != null">
-        repo_id = #{record.repoId,jdbcType=INTEGER},
+      <if test="record.repoNum != null">
+        repo_num = #{record.repoNum,jdbcType=VARCHAR},
       </if>
-      <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=INTEGER},
+      <if test="record.picAddr != null">
+        pic_addr = #{record.picAddr,jdbcType=VARCHAR},
       </if>
       <if test="record.stype != null">
         stype = #{record.stype,jdbcType=VARCHAR},
       </if>
-      <if test="record.remarks != null">
-        remarks = #{record.remarks,jdbcType=VARCHAR},
-      </if>
       <if test="record.status != null">
         status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.remarks != null">
+        remarks = #{record.remarks,jdbcType=VARCHAR},
       </if>
       <if test="record.createtime != null">
         createtime = #{record.createtime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.updatetime != null">
         updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.xlist != null">
+        xlist = #{record.xlist,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ylist != null">
+        ylist = #{record.ylist,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -233,15 +256,17 @@
     update order
     set id = #{record.id,jdbcType=INTEGER},
       num = #{record.num,jdbcType=VARCHAR},
-      pic_id = #{record.picId,jdbcType=INTEGER},
-      co_id = #{record.coId,jdbcType=INTEGER},
-      repo_id = #{record.repoId,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=INTEGER},
+      user_num = #{record.userNum,jdbcType=VARCHAR},
+      pic_num = #{record.picNum,jdbcType=VARCHAR},
+      repo_num = #{record.repoNum,jdbcType=VARCHAR},
+      pic_addr = #{record.picAddr,jdbcType=VARCHAR},
       stype = #{record.stype,jdbcType=VARCHAR},
-      remarks = #{record.remarks,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
+      remarks = #{record.remarks,jdbcType=VARCHAR},
       createtime = #{record.createtime,jdbcType=TIMESTAMP},
-      updatetime = #{record.updatetime,jdbcType=TIMESTAMP}
+      updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      xlist = #{record.xlist,jdbcType=VARCHAR},
+      ylist = #{record.ylist,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -252,26 +277,26 @@
       <if test="num != null">
         num = #{num,jdbcType=VARCHAR},
       </if>
-      <if test="picId != null">
-        pic_id = #{picId,jdbcType=INTEGER},
+      <if test="userNum != null">
+        user_num = #{userNum,jdbcType=VARCHAR},
       </if>
-      <if test="coId != null">
-        co_id = #{coId,jdbcType=INTEGER},
+      <if test="picNum != null">
+        pic_num = #{picNum,jdbcType=VARCHAR},
       </if>
-      <if test="repoId != null">
-        repo_id = #{repoId,jdbcType=INTEGER},
+      <if test="repoNum != null">
+        repo_num = #{repoNum,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
+      <if test="picAddr != null">
+        pic_addr = #{picAddr,jdbcType=VARCHAR},
       </if>
       <if test="stype != null">
         stype = #{stype,jdbcType=VARCHAR},
       </if>
-      <if test="remarks != null">
-        remarks = #{remarks,jdbcType=VARCHAR},
-      </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null">
         createtime = #{createtime,jdbcType=TIMESTAMP},
@@ -279,21 +304,29 @@
       <if test="updatetime != null">
         updatetime = #{updatetime,jdbcType=TIMESTAMP},
       </if>
+      <if test="xlist != null">
+        xlist = #{xlist,jdbcType=VARCHAR},
+      </if>
+      <if test="ylist != null">
+        ylist = #{ylist,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zhihui.zhexpress.model.Order">
     update order
     set num = #{num,jdbcType=VARCHAR},
-      pic_id = #{picId,jdbcType=INTEGER},
-      co_id = #{coId,jdbcType=INTEGER},
-      repo_id = #{repoId,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER},
+      user_num = #{userNum,jdbcType=VARCHAR},
+      pic_num = #{picNum,jdbcType=VARCHAR},
+      repo_num = #{repoNum,jdbcType=VARCHAR},
+      pic_addr = #{picAddr,jdbcType=VARCHAR},
       stype = #{stype,jdbcType=VARCHAR},
-      remarks = #{remarks,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=TIMESTAMP},
-      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      xlist = #{xlist,jdbcType=VARCHAR},
+      ylist = #{ylist,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
