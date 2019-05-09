@@ -7,6 +7,7 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -34,7 +35,7 @@ public class RedisManager {
     public static RedisManager mInstance;
 
     //线程共享变量
-    private ThreadLocal<String> lockFlag = new ThreadLocal<String>();
+//    private ThreadLocal<String> lockFlag = new ThreadLocal<String>();
 
     //lua 脚本删除redislock 更快，不会有get出来，对比，再删除的长时间差
     public static final String UNLOCK_LUA;
@@ -92,6 +93,8 @@ public class RedisManager {
      */
     public void set(int keyType, String key, String value, long time, TimeUnit timeUnit) {
         mOperations.set(keyType + "-" + key, value, time, timeUnit);
+
+
     }
 
     public String get(int keyType, String key) {

@@ -15,6 +15,7 @@ import com.zhihui.zhexpress.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +29,8 @@ public class ZOrderService {
     @Autowired
     private SysConfigMapper mSysConfigMapper;
 
+//    @Autowired
+//    private PreparedStatement statement;
 
     /**
      * @param pageNum
@@ -57,13 +60,13 @@ public class ZOrderService {
 
     public Map exportOrders(String orderBy, String startTime, String endTime, String stype, String num, String repoNum, String userNum, String picNum, Integer status) {
         ExcelData excelData = new ExcelData();
-        String fileName = "扫描单明细" + new Date().getTime()+".xlsx";
+        String fileName = "扫描单明细" + new Date().getTime() + ".xlsx";
         excelData.setName(fileName);
         List<String> titles = new ArrayList<>();
         List<List<Object>> rows = new ArrayList<>();
         //标题
         titles.add("序号");
-        titles.add("扫描单编号");
+        titles.add("条码编号");
         titles.add("扫描人编号");
         titles.add("图片编号");
         titles.add("图片地址");
@@ -91,7 +94,7 @@ public class ZOrderService {
             row.add(o.getStype());
             row.add(o.getRemarks());
             row.add(DateUtil.getFormatDateStr(o.getCreatetime(), "YYYY-MM-DD hh:mm:ss"));
-            row.add(DateUtil.getFormatDateStr(o.getUpdatetime(),"YYYY-MM-DD hh:mm:ss"));
+            row.add(DateUtil.getFormatDateStr(o.getUpdatetime(), "YYYY-MM-DD hh:mm:ss"));
             rows.add(row);
         }
         excelData.setTitles(titles);
@@ -104,7 +107,7 @@ public class ZOrderService {
             String appMode = ExpressApplication.getGlobalAppMode();
             String fileUrl = "";
             if (appMode.equals(ZHConfig.GLOBAL_APP_MODE_LIVE)) {
-                fileUrl = ZHConfig.SERVER_URL_LIVE + homeDir;
+                fileUrl = ZHConfig.SERVER_URL_LIVE + "/zhfiles/excel/";
             } else if (appMode.equals(ZHConfig.GLOBAL_APP_MODE_DEV)) {
                 fileUrl = ZHConfig.SERVER_URL_DEV + "/files/excel/";
             } else if (appMode.equals(ZHConfig.GLOBAL_APP_MODE_TEST)) {

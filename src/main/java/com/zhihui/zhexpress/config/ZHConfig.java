@@ -11,7 +11,7 @@ public class ZHConfig {
     public static final String GLOBAL_APP_MODE_DEV = "DEV";
     public static final String SERVER_URL_TEST = "http://localhost:8443/ZHexpressServer";
     public static final String SERVER_URL_DEV = "http://120.26.48.110";
-    public static final String SERVER_URL_LIVE = "https://www.doulongwan.world";
+    public static final String SERVER_URL_LIVE = "http://log.cloudyotech.com";
 
 
     // Request Codes type
